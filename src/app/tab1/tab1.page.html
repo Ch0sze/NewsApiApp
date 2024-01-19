@@ -1,17 +1,40 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      The News
     </ion-title>
+
+    <ion-buttons slot="end">
+      <!-- Tlačítkem otevřu stránku nastavení -->
+      <ion-button (click)="openSettings()">
+        <ion-icon name="cog" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">For You</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-list>
+    <ion-row class="ion-margin" style="background-color: #1a1a1a; border-radius: 5px; padding: 5px" (click)="getDetails(article)" *ngFor="let article of topHeadlines">
+
+      <ion-col>
+        <ion-img style="width:auto; height:200px; object-fit:cover;" [src]="article.urlToImage"></ion-img>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-label>
+          <p style="color: white; font-size: 1.2rem;"> {{article.title}}</p>
+          <p style="">{{article.publishedAt | date}}
+          <p style="font-weight: 200; font-size: 1rem;">{{article.author}}</p>
+        </ion-label>
+      </ion-col>
+
+    </ion-row>
+  </ion-list>
 </ion-content>
