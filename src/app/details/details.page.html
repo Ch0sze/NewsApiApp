@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{source}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <div style="position: relative; height: 400px; margin: 5px; border-radius: 5px; overflow: hidden;">
+    <img style="width: 100%; height: 100%; object-fit: cover;" [src]="image" alt="Image">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgb(34 35 41 /5%), rgb(34 35 41 /95%));"></div>
+    <h3 style="margin: 15px; position: absolute; bottom: 0; color: white;">{{author}}</h3>
+  </div>
+
+
+
+  <div style="margin: 15px;">
+    <ion-item lines="none">
+      <ion-label style=" text-align:left; font-size: 1.3rem; font-weight: bold;" class="ion-text-wrap">
+        {{title}}
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label style="text-align: right;">
+        <p>{{publishedAt | date}}</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label class="ion-text-wrap" style="font-size: 1rem;">
+        {{description}}
+      </ion-label>
+    </ion-item>
+  </div>
+
+  <div style="position: absolute; bottom: 20px; width: 100%;">
+    <ion-item lines="none">
+      <ion-button fill="clear" (click)="handleButtonClick('heart')">
+        <ion-icon name="heart" [color]="heartColor" class="larger-icon"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="handleButtonClick('share')">
+        <ion-icon name="share" class="larger-icon"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="handleButtonClick('bookmark')">
+        <ion-icon name="bookmark" [color]="bookmarkColor" class="larger-icon"></ion-icon>
+      </ion-button>
+      <ion-button fill="outline" color="secondary" slot="end" size="medium" (click)="handleButtonClick('readMore')">Read More</ion-button>
+    </ion-item>
+
+  </div>
+
+</ion-content>
